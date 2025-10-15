@@ -1,0 +1,50 @@
+Here is a structured explanation of the Oracle Hygiene Layer functional diagram from the context of the Neurosymbolic Peg Assurance framework:
+
+***
+
+### 1. Role
+
+The **Oracle Hygiene Layer** is critical in the NPA framework for ensuring the integrity, reliability, and trustworthiness of external market or price data that drive peg management. It acts as a crucial first line of defense against manipulated, delayed, or faulty price feeds—using both blockchain consensus and advanced AI-driven anomaly detection.
+
+***
+
+### 2. Inputs
+
+- **Blockchain Consensus Data:** Aggregates raw external price/data inputs from multiple decentralized sources, ensuring transparency and tamper-evidence.
+- **Symbolic Rules (from Oracles):** Encodes predefined logic used for consistency checks, e.g., allowable price bands or expected value ranges.
+- **Market Data (DEX, CEX, Reference indices):** Includes time-averaged or volume-based prices, alongside core metadata like depth, latency, and timestamp.
+- **AI Anomaly Detection Signals:** Receives information about potential outlier behaviors, drift, or feed manipulation, flagged by neural net models.
+
+***
+
+### 3. Process Flow
+
+- **Feed Normalization and Sanity Checks:** All incoming feeds undergo normalization and are checked against symbolic (rule-based) logic.
+- **Fast Loop Operation:** Real-time processing (seconds-level) occurs—prices are compared, and key features (like spread, depth, volatility) are computed.
+- **Discrepancy Detection:** The system continuously checks for data mismatches or suspicious variance across sources, using both symbolic logic and neural anomaly predictors.
+- **AI Anomaly Detection:** Advanced machine learning models evaluate and flag any statistical anomalies or manipulations in the feed data, providing an added layer of defense.
+- **Decision/Discrepancy Evaluation:** If any feed triggers the discrepancy threshold, the system either downgrades the affected data, quarantines an input, or triggers system-wide Integrity Mode.
+- **Output Emission:** The validated, weighted, and cleaned data flows to downstream trading, execution, and monitoring functions, as well as to the dashboard for observability and audit.
+
+***
+
+### 4. Outputs
+
+- **Validated Oracle Data:** High-confidence, manipulated-resistant price feeds and key market statistics.
+- **Anomaly Alerts:** System warnings for risk teams and automated stop/guardrail policies for protocol safety.
+- **Discrepancy and Sanity Check Signals:** Metrics for governance and adjustment modules.
+- **Predicted Demand Signals:** Projected metrics provided for downstream neural or symbolic decision layers.
+- **Market Data Streams:** Cleaned and annotated for downstream AMO, router, and policy functions.
+
+***
+
+### 5. Interconnections
+
+- **Forwards validated and anomaly-flagged data** to modules like Smart Liquidity Router, Neurosymbolic Feedback Loop, and the Peg Health Dashboard for system-wide analytics and actions.
+- **Receives parameter updates and symbolic rules** from Governance and Policy modules to adapt its validation criteria dynamically.
+- **Sends alerts and integrity signals** to all major risk, trading, and treasury management modules in the event of severe discrepancies or manipulation risks.
+- **Feeds into the dashboard** for full transparency, SRE-style incident tracking, and audit trails for users, regulators, and governance bodies.
+
+***
+
+In the NPA framework, the Oracle Hygiene Layer ensures the ecosystem’s stability and defensibility by marrying cryptographically secure consensus with advanced AI pattern recognition, feeding only high-quality market data into the downstream decentralized financial mechanism.
