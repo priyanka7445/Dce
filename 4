@@ -1,0 +1,49 @@
+Here is a structured explanation of the Cross-Chain Peg Agents & zk-PoR² module functional diagram, contextualized for the Neurosymbolic Peg Assurance framework:
+
+***
+
+### 1. Role
+
+This module acts as the multi-chain extension and cryptographic integrity backbone of the NPA system. **Cross-Chain Peg Agents** defend the peg and synchronize state across different blockchains, while **zk-PoR² (Zero-Knowledge Proof of Reserves & Risk)** provides privacy-preserving, on-chain proofs that reserves and risk exposures are regularly verified, up-to-date, and meet all system requirements.
+
+***
+
+### 2. Inputs
+
+- **State and Price Data:** Reference prices, peg status, and mode flags from mainchain and local oracles.
+- **Reserve Balances & Liabilities:** Regularly ingested treasury balances, liability mappings, and stress constraint parameters.
+- **Proof Instructions:** Schedules, thresholds, and parameters for the proof generation and validation cadence.
+- **Emergency Commands:** System alerts or mode switches (from governance or integrity logic).
+- **Attestations/Data Commitments:** Updates and state snapshots from all connected chains.
+
+***
+
+### 3. Process Flow
+
+- **Proof Construction (zk-PoR²):** Local data is committed into cryptographic structures (e.g., Merkle Trees), and zk-proofs are generated attesting to the sufficiency of reserves, caps, and risk compliance even under stress-tested haircuts.
+- **Verification and Attestation:** Proofs are validated on-chain, updating system state with proof hashes and time-to-live (TTL) information.
+- **Peg Agent Operations:** Local agents mirror peg status to secondary chains, defend the peg with bounded on-chain actions, and coordinate with mainchain treasury for inventory and cap reconciliation.
+- **Emergency Sync/Controls:** If proofs expire, data fail verification, or a chain desynchronizes, the agent can trigger emergency protocols (e.g., freeze, local redemption only, or re-sync).
+- **Periodic Reconciliation:** Scheduled state syncing ensures all networks remain consistent, settling inventory and state without trusted bridges.
+
+***
+
+### 4. Outputs
+
+- **Verifiable Proofs (on-chain):** zk-proofs and their hashes, updated on all participating chains.
+- **Status Updates:** Attestations of reserve sufficiency, risk compliance, and peg status (per chain and system-wide).
+- **Emergency State Reports:** Flags and logs for any failures, expired proofs, or triggered controls.
+- **Transaction Protocols:** State changes, inventory deltas, and reconciliation communications across chains.
+
+***
+
+### 5. Interconnections
+
+- **All System Modules:** Sends proof and peg status to Oracle Hygiene, Neural Feedback, Router, and Governance modules for holistic risk and control.
+- **Governance Layer:** Receives proof validity, TTL, and emergency triggers; can initiate audits or override controls.
+- **Dashboard/Transparency Layer:** Supplies detailed proof attestations and multi-chain peg status for compliance, SRE monitoring, and external audit.
+- **External Chains:** Securely exchanges proofs, state hashes, and inventory deltas via Peg Agents—removing the need for trusted or centralized bridges.
+
+***
+
+In summary, this module transforms the assurance and security model for DeFi peg systems—enabling multi-chain, cryptographically auditable, and continuously verified pegging operations with immediate fail-safes and cross-chain risk visibility.
